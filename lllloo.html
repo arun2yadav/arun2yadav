@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: hsl(256, 26%, 21%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+        }
+
+        .text {
+            font-size: 90px;
+            font-weight: bold;
+            letter-spacing: 2px;
+          
+        }
+
+
+        .login-container {
+            background: #05385F;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: blue ;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: RED;
+        }
+
+        .spinner-box {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .configure-border-1, .configure-border-2 {
+            width: 115px;
+            height: 115px;
+            padding: 3px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .configure-border-1 {
+            background: #fb5b53;
+            animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
+        }
+
+        .configure-border-2 {
+            background: #f4f4;
+            transform: rotate(45deg);
+            animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
+        }
+
+        .configure-core {
+            width: 100%;
+            height: 100%;
+            background-color: #white;
+        }
+
+        @keyframes configure-clockwise {
+            0% {
+                transform: rotate(0);
+            }
+            25% {
+                transform: rotate(90deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            75% {
+                transform: rotate(270deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes configure-xclockwise {
+            0% {
+                transform: rotate(45deg);
+            }
+            25% {
+                transform: rotate(-45deg);
+            }
+            50% {
+                transform: rotate(-135deg);
+            }
+            75% {
+                transform: rotate(-225deg);
+            }
+            100% {
+                transform: rotate(-315deg);
+            }
+        }
+    </style>
+</head>
+<body>
+     
+        <div class="text">
+         <h1>TECH STORE </h1>
+     
+        </div>
+    <div class="login-container">
+        <h2>LOGIN</h2>
+        <div class="form-group">
+            <label for="username">USER ID / MAIL </label>
+            <input type="text" id="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">PASS</label>
+            <input type="password" id="password" required>
+        </div>
+        <button class="btn" onclick="login()">Login</button>
+        <div class="spinner-box" id="spinner">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            document.getElementById('spinner').style.display = 'flex';
+
+            setTimeout(function() {
+                if (username === 'IGNITER' && password === 'PASSWORD') {
+                    localStorage.setItem('loggedIn', JSON.stringify(true));
+                    alert('Login successful!');
+                    window.location.href = ' HOME.html';
+                } else {
+                    alert('Invalid login credentials.');
+                }
+                document.getElementById('spinner').style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
